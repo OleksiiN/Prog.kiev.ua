@@ -11,11 +11,17 @@ public class Task7 {
         System.out.print("Enter second number: ");
         int n2 = scanner.nextInt();
         average(n1, n2);
+       // System.out.println("Average = " + (int) average(n1, n2));
     }
 
+//    private static int average(int n1, int n2) {
+//        long sum = n1+n2;
+//        return (int)(sum/2);
+//    }
     private static void average(int n1, int n2) {
-        long sum = (long)n1+(long)n2;
-        int average = (int)(sum/2);
+        double sum = (n1/10 + n2/10);
+        int average = (int) (sum*10/2);
         System.out.println("Average = " + average);
+
     }
 }
