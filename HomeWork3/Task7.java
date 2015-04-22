@@ -15,7 +15,7 @@ public class Task7 {
 
     private static void average(int n1, int n2) {
         long sum = (long)n1+(long)n2;
-        int average = (int)(sum)/2;
+        int average = (int)(sum/2);
         System.out.println("Average = " + average);
     }
 }
