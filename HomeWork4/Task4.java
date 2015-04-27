@@ -9,13 +9,16 @@ public class Task4 {
 
     public static void main(String[] args) {
         int[] array = new int[SIZE];
-
+        int[] arr;
         randomFillArray(array, 0, 100);
         System.out.println(Arrays.toString(array));
-//        exchangeSortLefttoRight(array);
+        arr = array;
+        exchangeSortLefttoRight(array);
         System.out.println("Sort Left to Right: " + Arrays.toString(array));
-//        exchangeSortRighttoLeft(array);
+        arr = array;
+        exchangeSortRighttoLeft(array);
         System.out.println("Sort Right to Left: " + Arrays.toString(array));
+        arr = array;
         exchangeSortWithFlag(array);
         System.out.println("Sort with Flag: " + Arrays.toString(array));
     }
