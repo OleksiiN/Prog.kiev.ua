@@ -13,13 +13,13 @@ public class Task4 {
         randomFillArray(array, 0, 100);
         System.out.println(Arrays.toString(array));
         arr = array;
-        exchangeSortLefttoRight(array);
+        exchangeSortLefttoRight(arr);
         System.out.println("Sort Left to Right: " + Arrays.toString(array));
         arr = array;
-        exchangeSortRighttoLeft(array);
+        exchangeSortRighttoLeft(arr);
         System.out.println("Sort Right to Left: " + Arrays.toString(array));
         arr = array;
-        exchangeSortWithFlag(array);
+        exchangeSortWithFlag(arr);
         System.out.println("Sort with Flag: " + Arrays.toString(array));
     }
 
