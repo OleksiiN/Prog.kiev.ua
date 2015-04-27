@@ -12,9 +12,9 @@ public class Task4 {
 
         randomFillArray(array, 0, 100);
         System.out.println(Arrays.toString(array));
-        exchangeSortLefttoRight(array);
+//        exchangeSortLefttoRight(array);
         System.out.println("Sort Left to Right: " + Arrays.toString(array));
-        exchangeSortRighttoLeft(array);
+//        exchangeSortRighttoLeft(array);
         System.out.println("Sort Right to Left: " + Arrays.toString(array));
         exchangeSortWithFlag(array);
         System.out.println("Sort with Flag: " + Arrays.toString(array));
@@ -53,17 +53,18 @@ public class Task4 {
 
     private static void exchangeSortWithFlag(int[] array) {
         boolean Flag = false;
-        while (Flag) {
-            Flag = true;
-            for (int i = 0; i <= array.length-1; i++) {
+        while (!Flag) {
+            Flag = false;
+            for (int i = 1; i <= array.length-1; i++) {
                 if (array[i] < array[i - 1]) {
                     int v = array[i];
                     array[i] = array[i - 1];
                     array[i - 1] = v;
-                    Flag = false;
+                    Flag = true;
                 }
             }
         }
     }
+
 
 }
