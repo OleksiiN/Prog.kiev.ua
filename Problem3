@@ -1,0 +1,31 @@
+/**
+ * Created by Artem on 29.04.2015.
+ */
+public class Problem3 {
+    public static void main(String[] args) {
+        long value = 600851475143l;
+        long maxprime = 3;
+        int z = 0;
+        for (long i = (long)Math.sqrt(value) - maxprime; i >= 1 ; i--) {
+            if (Prime(i) == true)
+                maxprime = i;
+            if (value % maxprime == 0 || i == 1) break;
+        }
+        System.out.println(maxprime);
+    }
+
+    public static boolean Prime (long i) {
+        boolean prime = false;
+        for (int j = 2; j <= i-1; j++) {
+            if (i % j !=0) prime = true;
+            else {
+                prime = false;
+                break;
+            }
+        }
+        return prime;
+
+    }
+
+
+}
