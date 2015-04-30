@@ -1,0 +1,9 @@
+	public static long factorial(int n) {
+		long f = 1l;
+		if (n <= 0) throw new IllegalArgumentException ("Invalid argument");
+		for (int i = 1; i <= n; i++) {
+			if (f > Long.MAX_VALUE/i) throw new IllegalArgumentException ("Result greater than MAX LONG VALUE = "+Long.MAX_VALUE);
+			else f = f*i;
+		}
+	return f;	
+	}
