@@ -1,0 +1,9 @@
+	public static int getToyID (String name) {
+		switch (name) {
+			case "Car":		return 0;
+			case "Lego": 	return 1;
+			case "Doll": 	return 2;
+			case "Puzzle": 	return 3;
+			default: 	throw new IllegalArgumentException ("Invalid choice");
+		}
+	}
