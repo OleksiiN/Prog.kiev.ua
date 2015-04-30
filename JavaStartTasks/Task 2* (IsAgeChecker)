@@ -1,0 +1,4 @@
+	public static boolean isAge (int a) {
+		if (a <= 0 || a > 120) return false;
+		else return true;
+	}
