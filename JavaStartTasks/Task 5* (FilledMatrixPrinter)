@@ -1,0 +1,9 @@
+	public static void printFilledMatrix(int rows, int cols, int filler) {
+		if (rows < 0 || cols <0) throw new IllegalArgumentException ("Illigable argument");
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+			System.out.print(filler);
+			}
+		System.out.println();
+		}
+	}
