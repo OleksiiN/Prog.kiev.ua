@@ -1,0 +1,19 @@
+public static void printRange(int first, int last, int step) {
+		if (last > first) {
+			if (step <=0) throw new IllegalArgumentException ("Invalid step");
+			for (int i = first; i <= last; i+=step) {
+			System.out.print(i + " ");
+			}
+		}
+		else if (last < first) {
+			if (step >=0) throw new IllegalArgumentException ("Invalid step");
+			for (int i = first; i >= last; i+=step) {
+			System.out.print(i + " ");
+			}
+		}
+		else {
+			if (step != 0) throw new IllegalArgumentException ("Invalid step");
+			else System.out.print(last);
+		}
+		System.out.println();
+}
