@@ -1,0 +1,4 @@
+  	public static int AgeParser (String a) {
+		if (Integer.parseInt(a) <= 0 || Integer.parseInt(a) > 120) throw new IllegalArgumentException ("Invalid age");
+		else return Integer.parseInt(a);
+	}
