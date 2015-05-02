@@ -12,6 +12,7 @@ public class AgeParser {
         } catch (IllegalArgumentException e) {
             throw e;
         }
+        scanner.close();
     }
 
     public static int AgeParser(String a) {
