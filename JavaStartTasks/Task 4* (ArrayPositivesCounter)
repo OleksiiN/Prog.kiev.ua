@@ -1,0 +1,17 @@
+/**
+ * Created by Oleksii on 02.05.2015.
+ */
+public class ArrayPositivesCounter {
+    public static void main(String[] args) {
+        System.out.println(countPositives(new int[]{-3, 0, -1, 4, -2, 5}));
+        System.out.println(countPositives(new int[]{-3, 0, -1, -4, -2, -5}));
+    }
+
+    public static int countPositives(int[] array) {
+        int sum = 0;
+        for (int i =0; i < array.length; i++) {
+            if (array[i] > 0) sum++;
+        }
+        return sum;
+    }
+}
