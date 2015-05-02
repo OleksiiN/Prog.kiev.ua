@@ -1,9 +1,17 @@
-	public static int min (int a, int b) {
-		if (a > b) return b;
-		else return a;
-	}
-	
-	public static int max (int a, int b) {
-		if (a > b) return a;
-		else return b;
-	}
+/**
+ * Created by Oleksii on 02.05.2015.
+ */
+public class MinMaxCalculator {
+    public static void main(String[] args) {
+        System.out.println(min(2,1));
+        System.out.println(max(2, 1));
+    }
+
+    public static int min(int a, int b) {
+        return a > b ? b : a;
+    }
+
+    public static int max(int a, int b) {
+        return a > b ? a : b;
+    }
+}
