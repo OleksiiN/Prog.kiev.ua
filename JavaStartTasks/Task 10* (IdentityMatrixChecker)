@@ -1,0 +1,27 @@
+/**
+ * Created by Oleksii on 03.05.2015.
+ */
+public class IdentityMatrixChecker {
+    public static void main(String[] args) {
+        System.out.println(isIdentity(new int[][]{ {1, 0, 0, 0},{0, 1, 0, 0},{0, 0, 1, 0},{0, 0, 0, 1}}));
+        System.out.println(isIdentity(new int[][]{ {1, 0, 1, 0},{0, 1, 0, 0},{0, 0, 1, 0},{0, 0, 0, 1}}));
+    }
+
+    private static boolean isIdentity(int[][] matrix) {
+        boolean is1 = false;
+        boolean is2 = false;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                if (i==j) {
+                    if (matrix[i][j]==1) is1 =  true; else {return false;};
+                }
+                else {
+                    if (matrix[i][j]==0) is2 =  true; else {return false;};
+                }
+            }
+        }
+        return (is1 && is2);
+    }
+
+
+}
