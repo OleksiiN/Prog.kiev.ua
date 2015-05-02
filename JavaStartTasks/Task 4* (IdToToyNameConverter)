@@ -1,8 +1,27 @@
-public static String getToyName(int id) {
-		if (id == 0) return "Car";
-		else if (id == 1) return "Lego";
-		else if (id == 2) return "Doll";
-		else if (id == 3) return "Puzzle";
-		else throw new IllegalArgumentException ("Invalid choice");
-		
-	}
+import java.util.Scanner;
+
+/**
+ * Created by Oleksii on 02.05.2015.
+ */
+public class IdToToyNameConverter {
+    public static void main(String[] args) {
+        System.out.println("Enter your choice:");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.println(getToyName(scanner.nextInt()));
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+        scanner.close();
+    }
+
+    public static String getToyName(int id) {
+        if (id == 0) return "Car";
+        else if (id == 1) return "Lego";
+        else if (id == 2) return "Doll";
+        else if (id == 3) return "Puzzle";
+        else throw new IllegalArgumentException("Invalid choice");
+
+    }
+
+}
