@@ -1,19 +1,41 @@
-public static void printRange(int first, int last, int step) {
-		if (last > first) {
-			if (step <=0) throw new IllegalArgumentException ("Invalid step");
-			for (int i = first; i <= last; i+=step) {
-			System.out.print(i + " ");
-			}
-		}
-		else if (last < first) {
-			if (step >=0) throw new IllegalArgumentException ("Invalid step");
-			for (int i = first; i >= last; i+=step) {
-			System.out.print(i + " ");
-			}
-		}
-		else {
-			if (step != 0) throw new IllegalArgumentException ("Invalid step");
-			else System.out.print(last);
-		}
-		System.out.println();
+import java.util.Scanner;
+
+/**
+ * Created by Oleksii on 02.05.2015.
+ */
+public class RangeWithStepPrinter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter first number of array:");
+        int first = scanner.nextInt();
+        System.out.println("Enter last number of array:");
+        int last = scanner.nextInt();
+        System.out.println("Enter step of array:");
+        int step = scanner.nextInt();
+        try {
+            printRange(first, last, step);
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+        scanner.close();
+    }
+
+    public static void printRange(int first, int last, int step) {
+        if (last > first) {
+            if (step <= 0) throw new IllegalArgumentException("Invalid step");
+            for (int i = first; i <= last; i += step) {
+                System.out.print(i + " ");
+            }
+        } else if (last < first) {
+            if (step >= 0) throw new IllegalArgumentException("Invalid step");
+            for (int i = first; i >= last; i += step) {
+                System.out.print(i + " ");
+            }
+        } else {
+            if (step != 0) throw new IllegalArgumentException("Invalid step");
+            else System.out.print(last);
+        }
+        System.out.println();
+    }
+
 }
