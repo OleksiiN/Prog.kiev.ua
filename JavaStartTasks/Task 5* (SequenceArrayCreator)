@@ -1,0 +1,28 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+/**
+ * Created by Oleksii on 02.05.2015.
+ */
+public class SequenceArrayCreator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter array length:");
+        int size = scanner.nextInt();
+        try {
+            System.out.println(Arrays.toString(createSequenceArray(size)));
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+        scanner.close();
+    }
+
+    public static int[] createSequenceArray(int size) {
+        if (size < 0) throw new IllegalArgumentException("Illegal size of array");
+        int[] array = new int[size];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = i;
+        }
+        return array;
+    }
+}
