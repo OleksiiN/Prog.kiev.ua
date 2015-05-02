@@ -1,9 +1,32 @@
-	public static int getToyID (String name) {
-		switch (name) {
-			case "Car":		return 0;
-			case "Lego": 	return 1;
-			case "Doll": 	return 2;
-			case "Puzzle": 	return 3;
-			default: 	throw new IllegalArgumentException ("Invalid choice");
-		}
-	}
+import java.util.Scanner;
+
+/**
+ * Created by Oleksii on 02.05.2015.
+ */
+public class ToyNameToIdConverter {
+    public static void main(String[] args) {
+        System.out.println("Enter your choice:");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.println(getToyID(scanner.next()));
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+        scanner.close();
+    }
+
+    public static int getToyID(String name) {
+        switch (name) {
+            case "Car":
+                return 0;
+            case "Lego":
+                return 1;
+            case "Doll":
+                return 2;
+            case "Puzzle":
+                return 3;
+            default:
+                throw new IllegalArgumentException("Invalid choice");
+        }
+    }
+}
