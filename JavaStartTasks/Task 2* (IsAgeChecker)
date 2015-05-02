@@ -1,4 +1,15 @@
-	public static boolean isAge (int a) {
-		if (a <= 0 || a > 120) return false;
-		else return true;
-	}
+/**
+ * Created by Oleksii on 02.05.2015.
+ */
+public class IsAgeChecker {
+    public static void main(String[] args) {
+        System.out.println(isAge(25));
+        System.out.println(isAge(0));
+        System.out.println(isAge(120));
+        System.out.println(isAge(121));
+    }
+
+    public static boolean isAge(int a) {
+        return (a <= 0 || a > 120) ? false : true;
+    }
+}
