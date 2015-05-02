@@ -1,9 +1,28 @@
-	public static long factorial(int n) {
-		long f = 1l;
-		if (n <= 0) throw new IllegalArgumentException ("Invalid argument");
-		for (int i = 1; i <= n; i++) {
-			if (f > Long.MAX_VALUE/i) throw new IllegalArgumentException ("Result greater than MAX LONG VALUE = "+Long.MAX_VALUE);
-			else f = f*i;
-		}
-	return f;	
-	}
+import java.util.Scanner;
+
+/**
+ * Created by Oleksii on 02.05.2015.
+ */
+public class FactorialCalculator {
+    public static void main(String[] args) {
+        System.out.println("Enter number");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.println(factorial(scanner.nextInt()));
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+        scanner.close();
+    }
+
+    public static long factorial(int n) {
+        long f = 1l;
+        if (n < 0) throw new IllegalArgumentException ("Invalid argument");
+        if (n == 0) return 1;
+        for (int i = 1; i <= n; i++) {
+            if (f > Long.MAX_VALUE/i) throw new IllegalArgumentException ("Result greater than MAX LONG VALUE = "+Long.MAX_VALUE);
+            else f = f*i;
+        }
+        return f;
+    }
+}
