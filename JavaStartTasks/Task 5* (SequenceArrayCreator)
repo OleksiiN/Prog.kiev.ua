@@ -8,9 +8,8 @@ public class SequenceArrayCreator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter array length:");
-        int size = scanner.nextInt();
         try {
-            System.out.println(Arrays.toString(createSequenceArray(size)));
+            System.out.println(Arrays.toString(createSequenceArray(scanner.nextInt())));
         } catch (IllegalArgumentException e) {
             throw e;
         }
