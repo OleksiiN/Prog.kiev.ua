@@ -3,13 +3,27 @@
  */
 public class IdentityMatrixChecker {
     public static void main(String[] args) {
+        try {
         System.out.println(isIdentity(new int[][]{ {1, 0, 0, 0},{0, 1, 0, 0},{0, 0, 1, 0},{0, 0, 0, 1}}));
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+        try {
         System.out.println(isIdentity(new int[][]{ {1, 0, 1, 0},{0, 1, 0, 0},{0, 0, 1, 0},{0, 0, 0, 1}}));
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+        try {
+            System.out.println(isIdentity(new int[][]{ {1, 0, 1},{0, 1, 0},{0, 0, 1},{0, 0, 0}}));
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
     }
 
     private static boolean isIdentity(int[][] matrix) {
         boolean is1 = false;
         boolean is2 = false;
+        if (matrix.length != matrix[0].length) throw new IllegalArgumentException("It's not square matrix");
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
                 if (i==j) {
