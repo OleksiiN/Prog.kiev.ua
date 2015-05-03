@@ -1,0 +1,26 @@
+import static java.lang.Math.pow;
+
+/**
+ * Created by Oleksii on 03.05.2015.
+ */
+public class DigitsPrinter {
+    public static void main(String[] args) {
+        printDigits(-123456789);
+    }
+
+    private static void printDigits(int n) {
+        int l = 0;
+        int z = Math.abs(n);
+        String sig = (n < 0 ? "-" : "");
+        while (z > 0) {
+            z /= 10;
+            l++;
+        }
+        System.out.print(sig);
+        for (int i = l-1; i >= 0; i--) {
+            System.out.print((int)((Math.abs(n) / pow(10, i)) % 10) + " ");
+        }
+    }
+
+
+}
