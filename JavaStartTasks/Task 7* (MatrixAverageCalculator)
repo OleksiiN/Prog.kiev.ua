@@ -5,13 +5,13 @@ import static java.lang.Math.pow;
  */
 public class MatrixAverageCalculator {
     public static void main(String[] args) {
-        System.out.println(findMaxSumRow(new int[][]{{0, 3, -2}, {2, 1, 3}, {-1, 5, 2}}));
+        System.out.println(findMaxSumRow(new int[][]{{0, 3}, {2, 1}, {-1, 5}}));
     }
 
     private static double findMaxSumRow(int[][] matrix) {
         int sum = 0;
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
+            for (int j = 0; j < matrix[i].length; j++) {
                 sum += matrix[i][j];
             }
         }
