@@ -1,0 +1,45 @@
+/**
+ * Created by Oleksii on 04.05.2015.
+ */
+public class PrimesPrinter {
+    public static void main(String[] args) {
+        try {
+            printPrimes(-1, 11);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error! " + e);
+        }
+        try {
+            printPrimes(101, 110);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error! " + e);
+        }
+        try {
+            printPrimes(-10, -1);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error! " + e);
+        }
+        try {
+            printPrimes(10, 1);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error! " + e);
+        }
+    }
+
+    public static void printPrimes(int from, int to) throws IllegalArgumentException {
+        if (to < 2 || from > to) throw new IllegalArgumentException("Wrong arguments for method");
+        for (int i = from; i <= to; i++) {
+            if (isPrime(i)) System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+
+    public static boolean isPrime(int n) {
+        boolean prime = false;
+        if (n == 2) return true;
+        for (int i = 2; i < n; i++) {
+            if (n % i != 0) prime = true;
+            else return false;
+        }
+        return prime;
+    }
+}
