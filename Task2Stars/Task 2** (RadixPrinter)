@@ -5,46 +5,40 @@ public class RadixPrinter {
     public static void main(String[] args) {
         try {
             printInRadix(147292, 2);
-        } catch (IllegalStateException e) {
-            throw e;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error! " + e);
         }
         System.out.println();
         try {
             printInRadix(147292, 8);
-        } catch (IllegalStateException e) {
-            throw e;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error! " + e);
         }
         System.out.println();
         try {
             printInRadix(147292, 10);
-        } catch (IllegalStateException e) {
-            throw e;
-        }
-        System.out.println();
-        try {
-            printInRadix(-147292, 10);
-        } catch (IllegalStateException e) {
-            throw e;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error! " + e);
         }
         System.out.println();
         try {
             printInRadix(147292, -10);
-        } catch (IllegalStateException e) {
-            throw e;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error! " + e);
         }
     }
 
-    private static void printInRadix(int n, int radix) {
+    private static void printInRadix(int n, int radix) throws IllegalArgumentException {
         if (n < 0 || radix > 10 || radix < 2) throw new IllegalArgumentException("Wrong arguments for method");
         int v = n;
-        int l = 0;
+        int length = 0;
         int k = 0;
         int rad = 1;
         while (v > 0) {
             v /= radix;
-            l++;
+            length++;
         }
-        for (int i = 0; i < l; i++) {
+        for (int i = 0; i < length; i++) {
             int z = n;
             while (z >= rad) {
                 k = z % radix;
