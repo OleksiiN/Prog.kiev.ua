@@ -14,7 +14,7 @@ public class PrimesPrinter {
             System.out.println("Error! " + e);
         }
         try {
-            printPrimes(-10, -1);
+            printPrimes(-100, 1);
         } catch (IllegalArgumentException e) {
             System.out.println("Error! " + e);
         }
@@ -26,10 +26,15 @@ public class PrimesPrinter {
     }
 
     public static void printPrimes(int from, int to) throws IllegalArgumentException {
-        if (to < 2 || from > to) throw new IllegalArgumentException("Wrong arguments for method");
+        if (from > to) throw new IllegalArgumentException("Wrong arguments for method");
+        int z = 0;
         for (int i = from; i <= to; i++) {
-            if (isPrime(i)) System.out.print(i + " ");
+            if (isPrime(i)) {
+                System.out.print(i + " ");
+                z++;
+            }
         }
+        if (z == 0) System.out.println("No prime numbers for specified range");
         System.out.println();
     }
 
