@@ -30,6 +30,7 @@ public class RadixPrinter {
 
     private static void printInRadix(int n, int radix) throws IllegalArgumentException {
         if (n < 0 || radix > 10 || radix < 2) throw new IllegalArgumentException("Wrong arguments for method");
+        if (n == 0) System.out.print(0);
         int v = n;
         int length = 0;
         int k = 0;
