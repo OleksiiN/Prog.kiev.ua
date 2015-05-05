@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+import static java.lang.Math.*;
+
+/**
+ * Created by Oleksii on 05.05.2015.
+ */
+public class DigitsSumCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter from");
+        int from = scanner.nextInt();
+        System.out.println("Enter to");
+        int to = scanner.nextInt();
+        try {
+            System.out.println(digitsSum(from, to));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error" + e);
+        }
+    }
+
+    private static int digitsSum(int from, int to) throws IllegalArgumentException {
+        int sum = 0;
+        if (from > to) throw new IllegalArgumentException("Wrong arguments for method");
+        if (from == to) return digitsSumEqual(from);
+        for (int i = from; i <= to; i++) {
+            sum += abs(i);
+        }
+        return sum;
+    }
+
+    private static int digitsSumEqual(int n) {
+        int sum = 0;
+        int l = 0;
+        int z = Math.abs(n);
+        while (z > 0) {
+            z /= 10;
+            l++;
+        }
+        for (int i = l - 1; i >= 0; i--) {
+            sum += (Math.abs(n) / pow(10, i)) % 10;
+        }
+        return sum;
+    }
+}
