@@ -24,7 +24,7 @@ public class DigitsSumCalculator {
         if (from > to) throw new IllegalArgumentException("Wrong arguments for method");
         if (from == to) return digitsSumEqual(from);
         for (int i = from; i <= to; i++) {
-            sum += abs(i);
+            sum += digitsSumEqual(i);
         }
         return sum;
     }
