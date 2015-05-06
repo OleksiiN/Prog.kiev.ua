@@ -9,22 +9,27 @@ public class PascalTriangleCreator {
         System.out.println("Enter number of lines");
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        for (int i = 0; i < n+1; i++) {
+        try {createPascalTriangle(n);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error! " + e);
+        }
+        for (int i = 0; i < n + 1; i++) {
             for (int j = 0; j <= i; j++) {
-                System.out.print(createPascalTriangle(n)[i][j] + " ");
-
+                System.out.print(createPascalTriangle(n)[i][j] + "  ");
             }
             System.out.println();
         }
     }
 
-    public static int[][] createPascalTriangle(int n) {
-        int[][] array = new int[n + 1][n+1];
-        for (int i = 0; i < n+1; i++) {
+    public static int[][] createPascalTriangle(int n) throws IllegalArgumentException {
+        if (n < 0) throw new IllegalArgumentException("Number of lines can't be negative");
+        int[][] array = new int[n + 1][n + 1];
+        for (int i = 0; i < n + 1; i++) {
             for (int j = 0; j <= i; j++) {
                 if (j == 0) array[i][j] = 1;
-                else if (i == j) {array[i][j] = 1;}
-                else array[i][j] = array[i-1][j]+ array[i-1][j-1];
+                else if (i == j) {
+                    array[i][j] = 1;
+                } else array[i][j] = array[i - 1][j] + array[i - 1][j - 1];
             }
         }
         return array;
