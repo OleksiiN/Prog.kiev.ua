@@ -1,0 +1,41 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		cyclicShift(new int[]{0, 1, 2, 3, 4}, 1);
+		cyclicShift(new int[]{0, 1, 2, 3, 4}, -1);
+		cyclicShift(new int[]{0, 1, 2, 3, 4}, 0);
+		cyclicShift(new int[]{0, 1, 2, 3, 4}, 5);
+
+	}
+	
+	public static void cyclicShift(int[] array, int shiftPositions) {
+		int[] array1 = new int[array.length];
+		if (shiftPositions >= array.length) shiftPositions = shiftPositions % array.length;
+		if (shiftPositions > 0) {
+			for (int i = 0; i < array.length ; i++) {
+				array1[shiftPositions] = array[i];
+				shiftPositions++;
+				if (shiftPositions>array.length-1) shiftPositions = 0;
+			}
+		}
+		else if (shiftPositions < 0) {
+			shiftPositions = Math.abs(shiftPositions);
+			for (int i = 0; i <  array.length ; i++) {
+				array1[i] = array[shiftPositions];
+				shiftPositions++;
+				if (shiftPositions>array.length-1) shiftPositions = 0;
+			}
+		} else array1 = array; 
+		
+		System.out.println(Arrays.toString(array1));
+	}
+	
+}
