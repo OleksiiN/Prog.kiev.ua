@@ -1,40 +1,35 @@
 /* package whatever; // don't place package name! */
-
 import java.util.*;
 import java.lang.*;
 import java.io.*;
-
 /* Name of the class has to be "Main" only if the class is public. */
 class Ideone
 {
-	public static void main (String[] args) throws java.lang.Exception
-	{
-	System.out.println(findFrequentElem(new int[]{1, 2, 1, 2, 0, 3, 2, -1, 1, 0, 0}));
-	}
-	
-	public static int findFrequentElem(int array[]) {
-		int[] array1 = new int[array.length];
-		array1 = EqualsArrayElem(array);
-		int max = 0;
-		int z = 0;
-		for (int i = array.length-1; i > 0; i--) {
-			if (array1 [i-1] <= array1[i]) {
-				max = array1[i];
-				z = i;
-			}
-		}
-	return z;
-	}
-	
-	public static int[] EqualsArrayElem (int array[]) {
-		int[] array1 = new int[array.length];
-		for (int i = 0; i < array.length; i++) {
-		for (int j = 0; j < array.length; j++) {
-			if (array[i] == array[j]) {array1[i]++;}
-		}	
-	}
-	return array1;
-	}
-	
-	
+public static void main (String[] args) throws java.lang.Exception
+{
+System.out.println(findFrequentElem(new int[]{1, 2, 1, 2, 0, 3, 2, -1, 0, 0, 0}));
+}
+public static int findFrequentElem(int array[]) {
+int[] array1 = new int[array.length];
+array1 = EqualsArrayElem(array);
+int max = array1[array.length-1];
+int z = 0;
+for (int i = array1.length-1; i > 0; i--) {
+	if (array1[i-1] >= max) {
+	max = array1[i-1];
+	z = i-1;
+	}	
+}
+return array[z];
+}
+
+public static int[] EqualsArrayElem (int array[]) {
+int[] array1 = new int[array.length];
+for (int i = 0; i < array.length; i++) {
+for (int j = 0; j < array.length; j++) {
+if (array[i] == array[j]) {array1[i]++;}
+}
+}
+return array1;
+}
 }
