@@ -1,84 +1,78 @@
-//*******************************************************************
-// Java compiler created in PHP to quickly and safely test code.
-// NOTE: please read the 'More Info' tab to the right for shortcuts.
-//*******************************************************************
+/**
+ * Created by Oleksii on 08.05.2015.
+ */
+public class MatrixPacking {
+    public static void main(String[] args) {
+        int[][] array = {{1, 0, 3, 0}, {0, 0, 0, 0}, {3, 0, 5, 1}, {7, 0, 6, 0}, {0, 0, 0, 0}};
+        for (int i = 0; i < packMatrix(array).length; i++) {
+            for (int j = 0; j < packMatrix(array)[0].length; j++) {
+                System.out.print(packMatrix(array)[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 
-import java.lang.Math; // header stuff MUST go above the first class
+    public static int[][] packMatrix(int[][] sourceMatrix) {
+        return deleteCols(deleteRows(sourceMatrix));
+    }
 
-// our main class becomes a file but the main method is still found
-public class HelloWorld
-{
-  public static void main(String[] args)
-  {
-    int[][] array = {{1,0,3,0},{0,0,0,0},{3,0,5,1},{7,0,6,0},{0,0,0,0}};
-		
+    public static int[][] deleteRows(int[][] sourceMatrix) {
+        int count = 0;
+        int rows = 0;
+        int z = 0;
+        for (int i = 0; i < sourceMatrix.length; i++) {
+            for (int j = 0; j < sourceMatrix[0].length; j++) {
+                if (sourceMatrix[i][j] == 0) count++;
+            }
+            if (count == sourceMatrix[0].length) rows++;
+            count = 0;
+        }
 
-    	deleteCols(deleteRows(array));
-    	
-  }
+        int[][] array = new int[sourceMatrix.length - rows][sourceMatrix[0].length];
 
-// this will become its own file too (and these can be in any order)
-public static int[][] deleteRows(int[][] sourceMatrix) {
-		int count = 0;
-		int rows = 0;
-  		int z = 0;
-		for (int i = 0; i < sourceMatrix.length; i++) {
-			for (int j = 0; j < sourceMatrix[0].length; j++) {
-			if (sourceMatrix[i][j] == 0) count++;
-			}
-		if (count == sourceMatrix[0].length) rows++;
-		count = 0;
-		}
-		
-		int[][] array = new int[sourceMatrix.length-rows][sourceMatrix[0].length];
-		
-		for (int i = 0; i < sourceMatrix.length; i++) {
-			for (int j = 0; j < sourceMatrix[0].length; j++) {
-				if (sourceMatrix[i][j] == 0) count++;
-			}
-			if (count != sourceMatrix[0].length) {
-              for (int k = 0; k < sourceMatrix[0].length; k++){	
-                array[z][k] = sourceMatrix[i][k];
-              }
-            z++;  	
-			}
-		count = 0;
-		}
-		return array;
-	}
-  
-  public static void deleteCols(int[][] sourceMatrix) {
-		int count = 0;
-		int cols = 0;
-  		int z = 0;
-		for (int i = 0; i < sourceMatrix[0].length; i++) {
-			for (int j = 0; j < sourceMatrix.length; j++) {
-			if (sourceMatrix[j][i] == 0) count++;
-			}
-		if (count == sourceMatrix.length) cols++;
-		count = 0;
-		}
-    	
-    	int[][] array = new int[sourceMatrix.length][sourceMatrix[0].length-cols];
-    
-    	for (int i = 0; i < sourceMatrix[0].length; i++) {
-		for (int j = 0; j < sourceMatrix.length; j++) {
-			if (sourceMatrix[j][i] == 0) count++;
-			}
-			if (count != sourceMatrix.length) {
-              for (int k = 0; k < sourceMatrix.length; k++){	
-                array[k][z] = sourceMatrix[k][i];
-              }
-            z++;  	
-			}
-		count = 0;
-		}
-    	
-    	for (int i = 0; i < array.length; i++) {
-			for (int j = 0; j < array[0].length; j++) {
-			System.out.print(array[i][j]+" ");
-			}
-			System.out.println();
-		}
-	}
+        for (int i = 0; i < sourceMatrix.length; i++) {
+            for (int j = 0; j < sourceMatrix[0].length; j++) {
+                if (sourceMatrix[i][j] == 0) count++;
+            }
+            if (count != sourceMatrix[0].length) {
+                for (int k = 0; k < sourceMatrix[0].length; k++) {
+                    array[z][k] = sourceMatrix[i][k];
+                }
+                z++;
+            }
+            count = 0;
+        }
+        return array;
+    }
+
+    public static int[][] deleteCols(int[][] sourceMatrix) {
+        int count = 0;
+        int cols = 0;
+        int z = 0;
+        for (int i = 0; i < sourceMatrix[0].length; i++) {
+            for (int j = 0; j < sourceMatrix.length; j++) {
+                if (sourceMatrix[j][i] == 0) count++;
+            }
+            if (count == sourceMatrix.length) cols++;
+            count = 0;
+        }
+
+        int[][] array = new int[sourceMatrix.length][sourceMatrix[0].length - cols];
+
+        for (int i = 0; i < sourceMatrix[0].length; i++) {
+            for (int j = 0; j < sourceMatrix.length; j++) {
+                if (sourceMatrix[j][i] == 0) count++;
+            }
+            if (count != sourceMatrix.length) {
+                for (int k = 0; k < sourceMatrix.length; k++) {
+                    array[k][z] = sourceMatrix[k][i];
+                }
+                z++;
+            }
+            count = 0;
+        }
+        return array;
+    }
 }
+
+
