@@ -1,19 +1,29 @@
-public class HelloWorld
-{
-  public static void main(String[] args)
-  {
-		System.out.println(Fibo(50));
-  }
-  
+import java.util.Scanner;
 
-  public static long Fibo (int N) {
-    long[] array = new long[N+1];
-	array[0] = 0;
-    array[1] = 1;
-    for (int i = 2; i < N+1; i++) {
-    array[i] = array[i-1]+array[i-2];
+/**
+ * Created by Oleksii on 12.05.2015.
+ */
+public class Task_1_1_19 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter N:");
+        int N = sc.nextInt();
+        try {
+            System.out.println("Fibonachi = " + Fibo(N));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error! " + e);
+        }
     }
-  	return array[N];
-  }
-  
+
+    public static long Fibo(int N) throws IllegalArgumentException {
+        if (N < 0) throw new IllegalArgumentException("Argument can't negative number");
+        long[] array = new long[N + 1];
+        array[0] = 0;
+        array[1] = 1;
+        for (int i = 2; i < N + 1; i++) {
+            array[i] = array[i - 1] + array[i - 2];
+        }
+        return array[N];
+    }
+
 }
