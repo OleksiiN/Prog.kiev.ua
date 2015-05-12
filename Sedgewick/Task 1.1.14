@@ -1,20 +1,28 @@
-public class HelloWorld
-{
-  public static void main(String[] args)
-  {
-		System.out.println(lg(368));
-  }
-  
+import java.util.Scanner;
 
-  public static int lg (int N) {
-  int z = 1;
-    int i = 0;
-    do {
-      z = z *2;
-      i++;
-    } while (z <=N);
+/**
+ * Created by Oleksii on 12.05.2015.
+ */
+public class Task_1_1_14 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter N:");
+        int N = sc.nextInt();
+        try {
+            System.out.println(lg(N));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error" + e);
+        }
+    }
 
-  return i-1;
-  }
-  
+    public static int lg(int N) throws IllegalArgumentException {
+        if (N <=0) throw new IllegalArgumentException("Argument can't be smaller than 1");
+        int z = 1;
+        int i = 0;
+        do {
+            z = z * 2;
+            i++;
+        } while (z <= N);
+        return i - 1;
+    }
 }
