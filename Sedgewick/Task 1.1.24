@@ -1,0 +1,19 @@
+import java.lang.Math;
+
+public class HelloWorld
+{
+  public static void main(String[] args)
+  {
+    	System.out.println(gcd(1071, 1029));
+  }
+  
+
+
+ public static int gcd(int p, int q) {
+    if (q == 0) return p;
+    int r = p % q;
+   System.out.println(q + " " + r); 
+   return gcd (q, r);
+ }
+  
+}
