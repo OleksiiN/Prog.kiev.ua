@@ -17,17 +17,17 @@ public class Task_1_1_13 {
         }
         printArray(array);
         System.out.println();
-        transpArray(array);
+        printArray(transpArray(array));
     }
 
-    public static void transpArray(int[][] sarray) {
+    public static int[][] transpArray(int[][] sarray) {
         int[][] array = new int[sarray[0].length][sarray.length];
         for (int i = 0; i < sarray.length; i++) {
             for (int j = 0; j < sarray[0].length; j++) {
                 array[j][i] = sarray[i][j];
             }
         }
-        printArray(array);
+        return array;
     }
 
     public static void printArray(int[][] array) {
