@@ -1,0 +1,20 @@
+public class HelloWorld
+{
+  public static void main(String[] args)
+  {
+		System.out.println(lg(368));
+  }
+  
+
+  public static int lg (int N) {
+  int z = 1;
+    int i = 0;
+    do {
+      z = z *2;
+      i++;
+    } while (z <=N);
+
+  return i-1;
+  }
+  
+}
