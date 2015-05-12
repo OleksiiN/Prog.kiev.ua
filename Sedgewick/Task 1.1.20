@@ -1,0 +1,19 @@
+import java.lang.Math;
+
+public class HelloWorld
+{
+  public static void main(String[] args)
+  {
+    	System.out.println(lnFactorial(10));
+  }
+  
+
+
+ public static double lnFactorial(int N) {
+    if (N == 0) return 0;
+    if (N == 1) return 1;
+    if (N == 2) return Math.log(2);
+   	return lnFactorial(N-1)+Math.log(N);
+ }
+  
+}
