@@ -1,0 +1,36 @@
+
+import java.lang.Math;
+import javax.swing.*;
+
+public class HelloWorld
+{
+  public static void main(String[] args)
+  {
+String name;
+
+int age;
+
+System.out.println("Name?");
+
+name=JOptionPane.showInputDialog("Name");
+
+System.out.println("Name: "+name);
+
+System.out.println("Hello, "+name+"!");
+
+System.out.println("Age?");
+
+age=Integer.parseInt(JOptionPane.showInputDialog("Age"));
+
+System.out.println("Age: "+age+" years");
+
+
+System.out.println(name+", you "+age+" years!");
+
+System.exit(0);
+  }
+  
+  
+  
+}
+
