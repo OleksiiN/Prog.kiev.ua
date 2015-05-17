@@ -1,0 +1,139 @@
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ * Created by Oleksii on 15.05.2015.
+ */
+
+public class Task_1_1_33 {
+
+    public static final double min = 0.1;
+    public static final double max = 100.00;
+
+    public static void main(String[] args) {
+        dotPrint();
+        System.out.println();
+        double[][] xTemp = initiateMatrix(3, 4);
+        double[][] yTemp = initiateMatrix(4, 5);
+        printMatrix(xTemp);
+        System.out.println("*");
+        printMatrix(yTemp);
+        System.out.println("= ");
+        printMatrix(scalarMatrix(xTemp, yTemp));
+        System.out.println();
+        printMatrix(transpose(xTemp));
+    }
+
+    /*
+    Print scalar product of two vectors
+     */
+    private static void dotPrint() {
+        System.out.println("Enter size of arrays for dot:");
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        double[] x = initiateArray(N);
+        double[] y = initiateArray(N);
+        System.out.println("Scalar product for next arrays");
+        printArray(x);
+        printArray(y);
+        System.out.println(" = " + dot(x, y));
+        sc.close();
+    }
+
+    /*
+    The formula for calculating the scalar product of two vectors
+     */
+    private static double dot(double[] x, double[] y) {
+        double sum = 0;
+        for (int i = 0; i < x.length; i++) {
+            sum = sum + x[i] * y[i];
+        }
+        return (Math.round(100.0 * sum)) / 100.0;
+    }
+
+
+    /*
+    Calculate the scalar product of two Matrix
+     */
+    private static double[][] scalarMatrix(double[][] x, double[][] y) throws IllegalArgumentException {
+        double[][] array = new double[x.length][y[0].length];
+        if (x[0].length != y.length) {
+            new IllegalArgumentException("Number of columns in the first matrix must be  equals the number of rows in the second");
+        }
+        double[] xTemp = new double[x[0].length];
+        double[] yTemp = new double[y.length];
+        for (int i = 0; i < y[0].length; i++) {
+            for (int j = 0; j < x.length; j++) {
+                for (int iTemp = 0; iTemp < x[0].length; iTemp++) {
+                    xTemp[iTemp] = x[j][iTemp];
+                }
+                for (int jTemp = 0; jTemp < y.length; jTemp++) {
+                    yTemp[jTemp] = y[jTemp][i];
+                }
+                array[j][i] = dot(xTemp, yTemp);
+            }
+        }
+        return array;
+    }
+
+     /*
+    Transpose given Matrix
+     */
+    private static double[][] transpose(double[][] x) {
+        double[][] array = new double[x[0].length][x.length];
+        for (int i = 0; i < x.length; i++) {
+            for (int j = 0; j < x[0].length; j++) {
+                array[j][i] = x[i][j];
+            }
+        }
+        return array;
+    }
+
+    /*
+    Initiate Array for the given size. Use Random to fill array and Math to round numbers to two decimal places
+     */
+    private static double[] initiateArray(int size) {
+        double[] array = new double[size];
+        Random r = new Random();
+        for (int i = 0; i < size; i++) {
+            array[i] = (Math.round(100.0 * (min + (max - min) * r.nextDouble()))) / 100.0;
+        }
+        return array;
+    }
+
+    /*
+    Initiate Array for the given size m - rows and n - columns. Use Random to fill array and Math to round numbers to two decimal places
+     */
+    private static double[][] initiateMatrix(int m, int n) {
+        double[][] array = new double[m][n];
+        Random r = new Random();
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[0].length; j++) {
+                array[i][j] = (Math.round(100.0 * (min + (max - min) * r.nextDouble()))) / 100.0;
+            }
+        }
+        return array;
+    }
+
+    /*
+    display given Array
+     */
+    private static void printArray(double[] array) {
+        System.out.println(Arrays.toString(array));
+    }
+
+    /*
+    display given Matrix
+     */
+    private static void printMatrix(double[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[0].length; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
+}
