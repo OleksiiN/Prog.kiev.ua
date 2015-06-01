@@ -1,0 +1,33 @@
+import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+/**
+ * Created by Oleksii on 30.05.2015.
+ */
+public class StudentPrint {
+    public static void main(String[] args) {
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        Student[] students = new Student[6];
+        students[0] = new Student(Student.getLastStudentIdId(), "Ivanov", "Ivan", "Ivanovich", 1, 1, 1990, "Kiev, Ivana str., 1",
+                "0441111111", "Java", "JS1", "Start");
+        students[1] = new Student(Student.getLastStudentIdId(), "Petrov", "Petr", "Petrovich", 2, 2, 1990, "Kiev, Petra str., 2",
+                "0442222222", "Java", "JS2", "Start");
+        students[2] = new Student(Student.getLastStudentIdId(), "Sidorov", "Sidor", "Sidorovich", 3, 3, 1991, "Kiev, Sidora str., 3",
+                "0443333333", "Java", "JO1", "OOP");
+        students[3] = new Student(Student.getLastStudentIdId(), "Kozlov", "Artem", "Nikolaevich", 4, 4, 1992, "Kiev, Artema, 1",
+                "0441111111", "C++", "CS1", "Start");
+        students[4] = new Student(Student.getLastStudentIdId(), "Popov", "Victor", "Fedorovich", 5, 5, 1992, "Kiev, Artema, 1",
+                "0441111111", "C++", "CS2", "Start");
+        students[5] = new Student(Student.getLastStudentIdId(), "Sokolov", "Yarosalv", "Romanovich", 6, 6, 1995, "Kiev, Artema, 1",
+                "0441111111", "C++", "CO1", "OOP");
+        for (Student student : students) {
+            System.out.println(student.toString());
+        }
+        StudentGroup.printListStudentsFaculty(students, "Java");
+        StudentGroup.printListStudentsYear(students, 1991);
+        StudentGroup.printListStudentsGroup(students, "CS2");
+    }
+
+}
