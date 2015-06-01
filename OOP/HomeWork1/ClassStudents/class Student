@@ -1,0 +1,110 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+/**
+ * Created by Oleksii on 30.05.2015.
+ */
+public class Student {
+    private static long lastStudentId = 0;
+
+    long id = lastStudentId++;
+    private String surname;
+    private String name;
+    private String middlename;
+    private Date birthdate;
+    private String address;
+    private String phone;
+    private String faculty;
+    private String group;
+    private String course;
+
+    public Student(long id, String surname, String name, String middlename,
+                   int birthDay, int birthMonth, int birthYear, String address, String phone,
+                   String faculty, String group, String course) {
+        this.id = id;
+        this.surname = surname;
+        this.name = name;
+        this.middlename = middlename;
+        this.birthdate = birthdate;
+        this.address = address;
+        this.phone = phone;
+        this.faculty = faculty;
+        this.group = group;
+        this.course = course;
+
+        GregorianCalendar calendar =
+                new GregorianCalendar(birthYear, birthMonth - 1, birthDay);
+        this.birthdate = calendar.getTime();
+    }
+
+    public static long getLastStudentIdId() {
+        return lastStudentId;
+    }
+
+    public String getSurname() {
+        checkDataString(surname);
+        return surname;
+    }
+
+    public String getName() {
+        checkDataString(name);
+        return name;
+    }
+
+    public String getMiddlename() {
+        checkDataString(middlename);
+        return middlename;
+    }
+
+    public Date getBirthdate() {
+        return (Date)birthdate.clone();
+    }
+
+    public String getAddress() {
+        checkDataString(address);
+        return address;
+    }
+
+    public String getPhone() {
+        checkDataString(phone);
+        return phone;
+    }
+
+    public String getFaculty() {
+        checkDataString(faculty);
+        return faculty;
+    }
+
+    public String getGroup() {
+        checkDataString(group);
+        return group;
+    }
+
+    public String getCourse() {
+        checkDataString(course);
+        return course;
+    }
+
+//    String surname, String name, String middlename,
+//    int birthDay, int birthMonth, int birthYear, String address, String phone,
+//    String faculty, String group, String course
+
+    public String toString() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        StringBuilder st = new StringBuilder("Surname: " + this.surname +
+                "\nName: " + this.name + "\nMiddle Name: " + this.middlename +
+                "\nBirthday: " + dateFormat.format(this.birthdate) +
+                "\nAddress: " + this.address + "\nContact phone: " + this.phone +
+                "\nFaculty: " + this.faculty + "\nCourse: " + this.course + "\nGroup: " + this.group + "\n");
+        return st.toString();
+    }
+
+    private void checkDataString(String data) {
+        if (data == null || data.equals("")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+
+}
