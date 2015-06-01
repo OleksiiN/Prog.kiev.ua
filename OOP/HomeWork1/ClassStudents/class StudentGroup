@@ -1,0 +1,49 @@
+import java.util.Calendar;
+
+/**
+ * Created by Oleksii on 01.06.2015.
+ */
+public class StudentGroup {
+    private Student student;
+
+    private static void checkStudentsList(Student[] students) throws IllegalArgumentException {
+        for (Student student : students) {
+            if (student == null) throw new IllegalArgumentException("The list is not full");
+        }
+    }
+
+    public static void printListStudentsYear(Student[] students, int year) {
+        System.out.println("List of students that older than " + year);
+        Calendar cal = Calendar.getInstance();
+        checkStudentsList(students);
+        for (Student student : students) {
+            Integer getYear = Integer.parseInt(student.getBirthdate().toString().substring(student.getBirthdate().toString().length() - 4));
+            if (getYear > year) {
+                System.out.println(student.getSurname() + " " + student.getName() + " " + student.getMiddlename());
+            }
+        }
+        System.out.println();
+    }
+
+    public static void printListStudentsFaculty(Student[] students, String faculty) {
+        System.out.println("List of students for '" + faculty + "' faculty:");
+        checkStudentsList(students);
+        for (Student student : students) {
+            if (student.getFaculty() == faculty) {
+                System.out.println(student.getSurname() + " " + student.getName() + " " + student.getMiddlename());
+            }
+        }
+        System.out.println();
+    }
+
+    public static void printListStudentsGroup(Student[] students, String group) {
+        System.out.println("List of students for '" + group + "' group:");
+        checkStudentsList(students);
+        for (Student student : students) {
+            if (student.getGroup() == group) {
+                System.out.println(student.getSurname() + " " + student.getName() + " " + student.getMiddlename());
+            }
+        }
+        System.out.println();
+    }
+}
