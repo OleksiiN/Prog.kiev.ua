@@ -1,0 +1,36 @@
+import java.io.*;
+
+/**
+ * Created by bygge_000 on 26.06.2015.
+ */
+public class FiboThread {
+    public static void main(String[] args) {
+        String dir = null;
+        for (int i = 1; i < 10; i++) {
+            try {
+                File fiboDir = new File("C:/Java/FiboThread/fibo" + i);
+                fiboDir.mkdir();
+                dir = fiboDir.getAbsolutePath();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                FileWriter fiboFile = new FileWriter(dir+"/fibo"+i+".txt");
+                PrintWriter file = new PrintWriter(fiboFile);
+                file.print(fibonum(i));
+                file.close();
+                System.out.println(fibonum(i));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static int fibonum(int i) {
+        if (i<=0) throw new IllegalArgumentException("Fibonachi can't be lower than 0");
+        if (i == 1 || i == 2) return 1;
+        return fibonum(i-1) + fibonum(i-2);
+    }
+
+
+}
