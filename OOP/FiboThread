@@ -1,36 +1,58 @@
 import java.io.*;
 
 /**
- * Created by bygge_000 on 26.06.2015.
+ * Created by Oleksii on 29.06.2015.
  */
-public class FiboThread {
+public class FiboFile {
+    public static String dir = null;
+
     public static void main(String[] args) {
-        String dir = null;
-        for (int i = 1; i < 10; i++) {
+        long start_time = System.currentTimeMillis();
+        for (int i = 11000; i < 12000; i++) {
             try {
-                File fiboDir = new File("C:/Java/FiboThread/fibo" + i);
-                fiboDir.mkdir();
-                dir = fiboDir.getAbsolutePath();
+                CreateDir(i);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             try {
-                FileWriter fiboFile = new FileWriter(dir+"/fibo"+i+".txt");
-                PrintWriter file = new PrintWriter(fiboFile);
-                file.print(fibonum(i));
-                file.close();
-                System.out.println(fibonum(i));
-            } catch (IOException e) {
+                CreateFiboFile(i);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+        long end_time = System.currentTimeMillis();
+        long time = end_time-start_time;
+        System.out.println();
+        System.out.println("Time needed to create directories, files and write Fibonacci = " + time + " milliseconds");
     }
 
-    private static int fibonum(int i) {
-        if (i<=0) throw new IllegalArgumentException("Fibonachi can't be lower than 0");
-        if (i == 1 || i == 2) return 1;
-        return fibonum(i-1) + fibonum(i-2);
+    public static void CreateDir(int i) throws Exception {
+        File fiboDir = new File("./fibo" + i);
+        fiboDir.mkdir();
+        dir = fiboDir.getAbsolutePath();
+        System.out.print("Directory - " + dir + " created;");
     }
 
+    public static void CreateFiboFile(int i) throws Exception {
+        FileWriter fiboFile = new FileWriter(dir + "/fibo" + i + ".txt");
+        System.out.print(" File - " + "\"fibo" + i + ".txt\" created;");
+        PrintWriter file = new PrintWriter(fiboFile);
+        long Fibo = FiboNotRecursion(i);
+        file.print(Fibo);
+        file.close();
+        System.out.println(" Fibonacci value = " + Fibo + " write in file successfully");
+    }
 
+    public static long FiboNotRecursion(int n) {
+        if (n <= 0) throw new IllegalArgumentException("Fibonacci can't be lower than 0");
+        if (n == 1 || n == 2) return 1;
+        long fibo = 1;
+        long fiboPrev = 1;
+        for (int i = 2; i < n; ++i) {
+            long temp = fibo;
+            fibo += fiboPrev;
+            fiboPrev = temp;
+        }
+        return fibo;
+    }
 }
